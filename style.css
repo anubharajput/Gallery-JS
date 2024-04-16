@@ -1,46 +1,196 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.gallery{
+
+body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.gallery {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(6, auto);
     width: 90%;
-    margin: 10vh auto 0 auto;
-    padding: 1rem;
+    /* margin: 10vh auto 0 auto;
+    padding: 1rem; */
     position: relative;
 }
+
+.empty-container {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    z-index: 1;
+    background-color: rgb(62, 62, 61);
+}
+
 .gallery .photo {
     cursor: pointer;
+    object-fit: cover;
 }
+
 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.gallery .img-container{
-    display: flex;
+
+.gallery .img-container {
+    display: none;
     flex-direction: column;
     position: absolute;
-    height:300px;
-    width:400px;
+    height: 300px;
+    width: 400px;
     background-color: white;
-    left:40%;
-    top:30%;
-    border:1px solid black;
-    padding:10px;
+    left: 40%;
+    top: 30%;
+    border: 1px solid black;
+    padding: 10px;
+    z-index: 2;
 }
-.gallery .img-container .btn-container{
+
+.gallery .img-container .btn-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:0 10px;
+    padding: 0 10px;
 }
-.gallery .img-container .btn-container div{
+
+.gallery .img-container .btn-container .icon {
+    font-size: 0.5rem;
+}
+
+.gallery .img-container .btn-container div {
     cursor: pointer;
+    color: rgb(5, 158, 223)
 }
-.gallery .img-container img{
-    width:100%;
+
+.gallery .img-container img {
+    width: 100%;
+}
+
+.gallery .img-container .display-img {
+    height: 90%;
+}
+
+@media screen and (min-width:320px) {
+    .gallery {
+        gap: 10px;
+        grid-template-columns: repeat(3, auto);
+    }
+
+    .gallery .photo {
+        height: 3.5rem;
+    }
+
+    .gallery .img-container {
+        height: 130px;
+        width: 219px;
+        left: 12%;
+        padding: 5px;
+    }
+
+    .gallery .img-container .btn-container div {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width:375px) {
+    .gallery .img-container {
+        left: 17%;
+    }
+}
+
+@media screen and (min-width:425px) {
+    .gallery .img-container {
+        left: 21%;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .gallery {
+        gap: 1rem;
+        grid-template-columns: repeat(6, auto);
+    }
+
+    .gallery .photo {
+        height: 4rem;
+    }
+
+    .gallery .img-container {
+        height: 164px;
+        width: 279px;
+        left: 30%;
+    }
+
+    .gallery .img-container .btn-container div {
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .gallery .photo {
+        height: 6rem;
+    }
+
+    .gallery .img-container {
+        height: 233px;
+        width: 350px;
+        left: 31%;
+    }
+
+    .gallery .img-container .btn-container div {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .gallery .photo {
+        height: 9rem;
+    }
+
+    .gallery .img-container {
+        height: 271px;
+        width: 415px;
+        left: 35%;
+    }
+
+    .gallery .img-container .btn-container div {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width:2560px) {
+    .gallery {
+        gap: 1.5rem;
+    }
+
+    .gallery .photo {
+        height: 13rem;
+    }
+
+    .gallery .img-container {
+        height: 500px;
+        width: 769px;
+        left: 33%;
+    }
+
+    .gallery .img-container .btn-container div {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 2rem;
+    }
+
+    .gallery .img-container .btn-container .icon {
+        font-size: 1.2rem;
+    }
+
 }

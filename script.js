@@ -1,8 +1,9 @@
 const gallery = document.getElementById("gallery");
-const preBtn = document.getElementById("pre-btn");
+const prevBtn = document.getElementById("pre-btn");
 const nextBtn = document.getElementById("next-btn");
-const imgContainer = document.getElementById("img-container");
-const displayImg=document.getElementById("display-img");
+const popupContainer = document.getElementById("img-container");
+const popupImg = document.getElementById("display-img");
+const backdropContainer = document.getElementById("empty-container");
 let slideIndex = 0;
 const images = ["images/img1.jpg", "images/img2.jpg", "images/img3.jpg", "images/img4.jpeg", "images/img5.jpg", "images/img6.webp", "images/img7.webp",
     "images/img8.jpeg",
@@ -31,22 +32,44 @@ const imgCreator = () => {
     })
 }
 imgCreator();
-const imgs=document.querySelectorAll(".photo");
-imgs.forEach((e,index) => {
+const imgCard = document.querySelectorAll(".photo");
+imgCard.forEach((e, index) => {
     e.addEventListener("click", () => {
-        displayImg.src=e.src;
-        slideIndex=index;
+        popupImg.src = e.src;
+        slideIndex = index;
+        popupContainer.style.display = "flex";
+        backdropContainer.style.display = "block";
+        hideShowBtn();
     })
 })
 const previousSlide = (e) => {
     slideIndex--;
-    displayImg.src=imgs[slideIndex].src;
-    
-  }
-  const nextSlide = (e) => {
+    popupImg.src = imgCard[slideIndex].src;
+    hideShowBtn();
+}
+const nextSlide = (e) => {
     slideIndex++;
-    displayImg.src=imgs[slideIndex].src;
-  }
-
-preBtn.addEventListener("click",previousSlide);
-nextBtn.addEventListener("click",nextSlide);
+    popupImg.src = imgCard[slideIndex].src;
+    hideShowBtn();
+}
+const handleBackdrop = () => {
+    popupContainer.style.display = "none";
+    backdropContainer.style.display = "none";
+}
+const hideShowBtn = () => {
+    if (slideIndex == 0) {
+        prevBtn.style.visibility = "hidden";
+        nextBtn.style.visibility = "visible";
+    }
+    else if (slideIndex == images.length - 1) {
+        prevBtn.style.visibility = "visible";
+        nextBtn.style.visibility = "hidden";
+    }
+    else {
+        prevBtn.style.visibility = "visible";
+        nextBtn.style.visibility = "visible";
+    }
+}
+prevBtn.addEventListener("click", previousSlide);
+nextBtn.addEventListener("click", nextSlide);
+backdropContainer.addEventListener("click", handleBackdrop);
