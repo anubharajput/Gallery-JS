@@ -17,8 +17,6 @@ body {
     gap: 1rem;
     grid-template-columns: repeat(6, auto);
     width: 90%;
-    /* margin: 10vh auto 0 auto;
-    padding: 1rem; */
     position: relative;
 }
 
@@ -35,6 +33,7 @@ body {
 .gallery .photo {
     cursor: pointer;
     object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
 }
 
 img {
@@ -55,6 +54,7 @@ img {
     border: 1px solid black;
     padding: 10px;
     z-index: 2;
+    animation: zoomIn 0.5s forwards;
 }
 
 .gallery .img-container .btn-container {
@@ -62,7 +62,7 @@ img {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-    height: 15%;
+    height: 10%;
 }
 
 .gallery .img-container .btn-container .icon {
@@ -80,6 +80,48 @@ img {
 
 .gallery .img-container .display-img {
     height: 90%;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+#display-img {
+    animation-duration: 0.5s;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+.fadeOut {
+    animation-name: fadeOut;
 }
 
 @media screen and (min-width:320px) {

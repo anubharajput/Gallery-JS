@@ -46,16 +46,31 @@ imgCard.forEach((e, index) => {
         showPrevNextBtn();
     })
 })
-const previousSlide = (e) => {
-    slideIndex--;
-    popupImg.src = imgCard[slideIndex].src;
-    showPrevNextBtn();
-}
-const nextSlide = (e) => {
-    slideIndex++;
-    popupImg.src = imgCard[slideIndex].src;
-    showPrevNextBtn();
-}
+const previousSlide = () => {
+    popupImg.classList.remove("fadeIn");
+    popupImg.classList.add("fadeOut");
+
+    setTimeout(() => {
+        slideIndex--;
+        popupImg.src = imgCard[slideIndex].src;
+        showPrevNextBtn();
+        popupImg.classList.remove("fadeOut");
+        popupImg.classList.add("fadeIn");
+    }, 100);
+};
+
+const nextSlide = () => {
+    popupImg.classList.remove("fadeIn");
+    popupImg.classList.add("fadeOut");
+
+    setTimeout(() => {
+        slideIndex++;
+        popupImg.src = imgCard[slideIndex].src;
+        showPrevNextBtn();
+        popupImg.classList.remove("fadeOut");
+        popupImg.classList.add("fadeIn");
+    }, 100);
+};
 const handleBackdrop = () => {
     popupImageContainer.style.display = "none";
     backdropContainer.style.display = "none";
