@@ -5,7 +5,13 @@ const popupImageContainer = document.getElementById("img-container");
 const popupImg = document.getElementById("display-img");
 const backdropContainer = document.getElementById("empty-container");
 let slideIndex = 0;
-const images = ["images/img1.jpg", "images/img2.jpg", "images/img3.jpg", "images/img4.jpeg", "images/img5.jpg", "images/img6.webp", "images/img7.webp",
+const images = ["images/img1.jpg",
+    "images/img2.jpg",
+    "images/img3.jpg",
+    "images/img4.jpeg",
+    "images/img5.jpg",
+    "images/img6.webp",
+    "images/img7.webp",
     "images/img8.jpeg",
     "images/img9.jpg",
     "images/img10.jpeg",
@@ -37,24 +43,24 @@ imgCard.forEach((e, index) => {
         slideIndex = index;
         popupImageContainer.style.display = "flex";
         backdropContainer.style.display = "block";
-        showBtn();
+        showPrevNextBtn();
     })
 })
 const previousSlide = (e) => {
     slideIndex--;
     popupImg.src = imgCard[slideIndex].src;
-    showBtn();
+    showPrevNextBtn();
 }
 const nextSlide = (e) => {
     slideIndex++;
     popupImg.src = imgCard[slideIndex].src;
-    showBtn();
+    showPrevNextBtn();
 }
 const handleBackdrop = () => {
     popupImageContainer.style.display = "none";
     backdropContainer.style.display = "none";
 }
-const showBtn = () => {
+const showPrevNextBtn = () => {
     if (slideIndex == 0) {
         prevBtn.style.visibility = "hidden";
         nextBtn.style.visibility = "visible";
